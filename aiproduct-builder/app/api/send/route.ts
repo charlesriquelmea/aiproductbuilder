@@ -10,13 +10,13 @@ export async function POST(request: Request) {
         const data = await resend.emails.send({
             from: "business@protolylat.com", //TODO: mail
             to: body.to,
-            subject: "Convértete en un AI Product Builder",
+            subject: body.subject,
             html: `
       <div style="background-color:#0a0a0a; color:white; font-family:'JetBrains Mono', monospace; padding:20px;">
       <h1 style="color:#39ff14;">${body.subject}</h1>
       <p style="color:#a855f7;">${body.message}</p>
       <footer style="margin-top:20px; font-size:12px; color:#888;">
-        Enviado con Resend
+        by Protolylat
       </footer>
     </div>
     `,
