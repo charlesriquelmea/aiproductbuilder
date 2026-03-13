@@ -44,7 +44,9 @@ export function UrgencyCTASection() {
               Cierran inscripciones el 6 de Abril.
             </h2>
             <p className="text-lg text-[#a1a1aa]">
-              Start: <span className="text-white font-semibold">7 de Abril 2026</span> — Para el <span className="text-white font-semibold">10 de Mayo de 2026</span>
+              {/* Start: <span className="text-white font-semibold">7 de Abril 2026</span> 
+              — Para el <span className="text-white font-semibold">10 de Mayo de 2026</span> */}
+              Start: <span className="text-white font-semibold">10 de Mayo de 2026</span>
             </p>
           </div>
 

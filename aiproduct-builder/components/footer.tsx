@@ -22,8 +22,9 @@ export function Footer() {
             <CountdownTimer />
             <p className="text-sm text-[#71717a]">
               Cierran inscripciones el <span className="text-white font-semibold">6 de Abril</span>.{" "}
-              Start: <span className="text-white font-semibold">7 de Abril 2026</span>.{" "}
-              Para el <span className="text-white font-semibold">10 de Mayo de 2026</span>.
+              {/* Start: <span className="text-white font-semibold">7 de Abril 2026</span>.{" "}
+              Para el <span className="text-white font-semibold">10 de Mayo de 2026</span>. */}
+              Start: <span className="text-white font-semibold">10 de Mayo de 2026</span>.{" "}
             </p>
           </div>
           <a href="#aplicar">
