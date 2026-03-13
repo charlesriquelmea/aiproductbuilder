@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
   try {
     const data = await resend.emails.send({
-      from: , //TODO: mail
+      from: "unmail@mail.com", //TODO: mail
       to: body.to,
       subject: body.subject,
       html: `<p>${body.message}</p>`,
