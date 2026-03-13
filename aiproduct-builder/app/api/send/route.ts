@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
     try {
         const data = await resend.emails.send({
-            from: "business@protolylat.com", //TODO: mail
+            from: "adrianmespindola@gmail.com", //TODO: mail
             to: body.to,
             subject: body.subject,
             html: `
