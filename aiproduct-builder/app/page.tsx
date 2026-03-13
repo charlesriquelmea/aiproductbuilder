@@ -13,6 +13,7 @@ import { UrgencyCTASection } from "@/components/urgency-cta-section"
 import { FAQSection } from "@/components/faq-section"
 import { ApplicationForm } from "@/components/application-form"
 import { Footer } from "@/components/footer"
+import EmailForm from "@/components/emailForm"
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <GuaranteeSection />
       <SocialProofSection />
       <UrgencyCTASection />
+      <EmailForm/>
       <FAQSection />
       <ApplicationForm />
       <Footer />
