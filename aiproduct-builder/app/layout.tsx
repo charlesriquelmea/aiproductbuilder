@@ -16,13 +16,13 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Buskero — Vibe Coder Bootcamp | Cohort #1',
+  title: 'Vibe Coder Bootcamp | Cohort #1',
   description:
     'De no saber programar a construir apps reales con IA en 8 semanas. Aprende Vibe Coding: arquitectura + herramientas de IA para construir, desplegar y monetizar aplicaciones.',
   generator: 'v0.app',
-  keywords: ['vibe coding', 'bootcamp', 'IA', 'programar', 'no-code', 'AI builder', 'Buskero'],
+  keywords: ['vibe coding', 'bootcamp', 'IA', 'programar', 'no-code', 'AI builder'],
   openGraph: {
-    title: 'Buskero — Vibe Coder Bootcamp | Cohort #1 Founding Members',
+    title: 'Vibe Coder Bootcamp | Cohort #1 Founding Members',
     description: 'Aprende Vibe Coding en 8 semanas. Solo 20 cupos disponibles.',
     type: 'website',
   },
