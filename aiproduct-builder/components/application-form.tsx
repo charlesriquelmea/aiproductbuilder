@@ -187,7 +187,7 @@ export function ApplicationForm() {
                     if (e.key === "Enter" && canProceed) handleNext()
                   }}
                   className="w-full bg-[#0f0f0f] border border-[#27272a] rounded-xl px-5 py-4 text-white text-lg placeholder:text-[#3f3f46] focus:outline-none focus:border-[#7c3aed] transition-colors"
-                  autoFocus
+                  
                 />
               )}
             </motion.div>
