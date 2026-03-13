@@ -22,8 +22,9 @@ export function Footer() {
             <CountdownTimer />
             <p className="text-sm text-[#71717a]">
               Cierran inscripciones el <span className="text-white font-semibold">6 de Abril</span>.{" "}
-              Start: <span className="text-white font-semibold">7 de Abril 2026</span>.{" "}
-              Para el <span className="text-white font-semibold">10 de Mayo de 2026</span>.
+              {/* Start: <span className="text-white font-semibold">7 de Abril 2026</span>.{" "}
+              Para el <span className="text-white font-semibold">10 de Mayo de 2026</span>. */}
+              Start: <span className="text-white font-semibold">10 de Mayo de 2026</span>.{" "}
             </p>
           </div>
           <a href="#aplicar">
@@ -41,12 +42,12 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo + tagline */}
           <div className="text-center md:text-left">
-            <span
+            {/* <span
               className="text-xl font-bold font-mono text-white"
               style={{ textShadow: "0 0 20px rgba(124, 58, 237, 0.3)" }}
             >
               Buskero
-            </span>
+            </span> */}
             <p className="text-sm text-[#71717a] mt-1">
               Build with AI. Ship fast. Get paid.
             </p>
@@ -92,7 +93,7 @@ export function Footer() {
         </div>
 
         <p className="text-center text-xs text-[#3f3f46] mt-10">
-          {"\u00a9 2026 Buskero. Todos los derechos reservados."}
+          {"\u00a9 2026 Protolytal. Todos los derechos reservados."}
         </p>
       </div>
     </footer>
