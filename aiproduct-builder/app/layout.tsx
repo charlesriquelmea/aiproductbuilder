@@ -26,6 +26,10 @@ export const metadata: Metadata = {
     description: 'Aprende Vibe Coding en 8 semanas. Solo 20 cupos disponibles.',
     type: 'website',
   },
+  icons: {
+    icon: 'favicon.png',
+    apple: 'favicon.png',
+  },
 }
 
 export const viewport: Viewport = {
