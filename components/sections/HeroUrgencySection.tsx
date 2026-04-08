@@ -306,7 +306,9 @@ export function HeroUrgencySection() {
 
         {/* BLOQUE 5 — COI Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto pt-8">
-          <CountUpNumber value={800} prefix="$" suffix="" label="por landing subcontratada · para siempre" />
+          <CountUpNumber value={1500} prefix="Dedsde $" suffix="" label="por landing subcontratada" />
+          <CountUpNumber value={2000} prefix="Dedsde $" suffix="" label="por cada automatización en n8n subcontratada" />
+          <CountUpNumber value={3000} prefix="Dedsde $" suffix="" label="por cada Web App Básica subcontratada" />
           <CountUpNumber value={4} suffix=" sem" label="de latencia por cada proyecto dependiente de un dev" />
           <CountUpNumber value={8} suffix=" sem" label="de aprendizaje acelerado (vs 18 meses)" />
         </div>
