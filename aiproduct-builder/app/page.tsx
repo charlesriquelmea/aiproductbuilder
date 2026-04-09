@@ -14,6 +14,8 @@ import { FAQSection } from "@/components/faq-section"
 import { ApplicationForm } from "@/components/application-form"
 import { Footer } from "@/components/footer"
 import { HeroUrgencySection } from "@/components/sections/HeroUrgencySection"
+import ROISection from "@/components/sections/ROISection"
+import InstructorsSection from "@/components/sections/InstructorsSection"
 
 export default function Home() {
   return (
@@ -25,6 +27,10 @@ export default function Home() {
       <PortfolioSection />
       <CurriculumSection />
       <ToolsSection />
+
+      <ROISection/>
+      <InstructorsSection/>
+
       <OfferSection />
       <HeroUrgencySection/>
       <CoachingSection />

@@ -35,10 +35,10 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-6">
             <div className="flex flex-col items-end gap-0.5">
               <CountdownTimer compact />
-              <span className="text-[10px] text-[#71717a] font-mono">Cierran inscripciones el 6 de Abril</span>
+              <span className="text-[10px] text-[#71717a] font-mono">Cierran inscripciones el 31 de Mayo</span>
             </div>
             <a href="#aplicar">
-              <Button className="bg-[#22c55e] hover:bg-[#16a34a] text-black font-semibold px-5">
+              <Button className="bg-neon-green hover:bg-[#16a34a] text-black font-semibold px-5">
                 <span className="text-black">Quiero ser AI Product Builder</span>
               </Button>
             </a>
@@ -65,10 +65,10 @@ export function Navbar() {
             <div className="px-4 py-4 flex flex-col gap-3">
               <div className="flex flex-col gap-0.5">
                 <CountdownTimer compact />
-                <span className="text-[10px] text-[#71717a] font-mono">Cierran inscripciones el 6 de Abril</span>
+                <span className="text-[10px] text-[#71717a] font-mono">Cierran inscripciones el 31 de Mayo</span>
               </div>
               <a href="#aplicar" onClick={() => setMobileOpen(false)}>
-                <Button className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-black font-semibold">
+                <Button className="w-full bg-neon-green hover:bg-[#16a34a] text-black font-semibold">
                   <span className="text-black">Quiero ser AI Product Builder</span>
                 </Button>
               </a>
