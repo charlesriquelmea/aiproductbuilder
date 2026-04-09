@@ -42,7 +42,7 @@ export function UrgencyCTASection() {
           <CountdownTimer />
 
           <div className="space-y-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-balance">
+            <h2 className="text-2xl md:text-4xl font-bold text-white text-balance">
               {t('urgency_cta.title')}
             </h2>
             <p className="text-lg text-[#a1a1aa]">

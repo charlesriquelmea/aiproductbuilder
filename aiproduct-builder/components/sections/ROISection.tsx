@@ -86,7 +86,7 @@ export default function ROISection() {
                     </div>
 
                     {/* Investment Card */}
-                    <div className="lg:col-span-4 mt-13 lg:top-24">
+                    <div className="lg:col-span-4 mt-8 lg:mt-0 lg:top-24">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}

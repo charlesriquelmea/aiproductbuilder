@@ -34,7 +34,7 @@ export function PortfolioSection() {
 
   return (
     <section className="py-20 md:py-28 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -63,7 +63,7 @@ export function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative bg-gradient-to-br ${item.color} border ${item.border} rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300`}
+              className={`group relative bg-linear-to-br ${item.color} border ${item.border} rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300`}
             >
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
