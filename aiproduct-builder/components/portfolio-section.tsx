@@ -2,41 +2,36 @@
 
 import { motion } from "framer-motion"
 import { Globe, Zap, Cpu } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const deliverables = [
-  {
-    icon: Globe,
-    title: "Landing Page Funcional",
-    desc: "Un sitio web profesional optimizado para la captura de leads, con arquitectura de información efectiva e interfaces creadas rápidamente mediante constructores visuales.",
-    badge: "Semana 2",
-    color: "from-[#7c3aed]/20 to-[#7c3aed]/5",
-    border: "border-[#7c3aed]/30",
-    iconColor: "text-[#7c3aed]",
-    badgeColor: "bg-[#7c3aed]/10 text-[#c4b5fd] border-[#7c3aed]/20",
-  },
-  {
-    icon: Zap,
-    title: "Sistema de Automatización",
-    desc: "Un motor impulsado por IA, construido en n8n, capaz de extraer, transformar y enviar datos entre plataformas usando Webhooks y APIs sin intervención manual.",
-    badge: "Sprint 2",
-    color: "from-[#22c55e]/20 to-[#22c55e]/5",
-    border: "border-[#22c55e]/30",
-    iconColor: "text-[#22c55e]",
-    badgeColor: "bg-[#22c55e]/10 text-[#86efac] border-[#22c55e]/20",
-  },
-  {
-    icon: Cpu,
-    title: "Single-Function App",
-    desc: "Tu propio Producto Mínimo Viable (MVP) resolviendo un problema real, conectado a bases de datos, lógica de negocio y completamente desplegado en la nube.",
-    badge: "Sprint 3",
-    color: "from-[#f97316]/20 to-[#f97316]/5",
-    border: "border-[#f97316]/30",
-    iconColor: "text-[#f97316]",
-    badgeColor: "bg-[#f97316]/10 text-[#fdba74] border-[#f97316]/20",
-  },
+const icons = [Globe, Zap, Cpu]
+const colors = [
+  "from-[#7c3aed]/20 to-[#7c3aed]/5",
+  "from-[#22c55e]/20 to-[#22c55e]/5",
+  "from-[#f97316]/20 to-[#f97316]/5"
+]
+const borders = ["border-[#7c3aed]/30", "border-[#22c55e]/30", "border-[#f97316]/30"]
+const iconColors = ["text-[#7c3aed]", "text-[#22c55e]", "text-[#f97316]"]
+const badgeColors = [
+  "bg-[#7c3aed]/10 text-[#c4b5fd] border-[#7c3aed]/20",
+  "bg-[#22c55e]/10 text-[#86efac] border-[#22c55e]/20",
+  "bg-[#f97316]/10 text-[#fdba74] border-[#f97316]/20"
 ]
 
 export function PortfolioSection() {
+  const { t } = useLanguage()
+
+  const deliverables = [0, 1, 2].map(i => ({
+    icon: icons[i],
+    title: t(`portfolio.items.${i}.title`),
+    desc: t(`portfolio.items.${i}.desc`),
+    badge: t(`portfolio.items.${i}.badge`),
+    color: colors[i],
+    border: borders[i],
+    iconColor: iconColors[i],
+    badgeColor: badgeColors[i],
+  }))
+
   return (
     <section className="py-20 md:py-28 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
@@ -50,20 +45,20 @@ export function PortfolioSection() {
           className="text-center mb-14"
         >
           <p className="text-[#7c3aed] font-mono text-sm mb-3 uppercase tracking-wider">
-            Portafolio
+            {t('portfolio.tag')}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white text-balance">
-            Tu portafolio en producción al finalizar la cohorte.
+            {t('portfolio.title')}
           </h2>
           <p className="text-[#71717a] mt-4 max-w-xl mx-auto">
-            3 entregables reales, desplegados y funcionando. No proyectos académicos.
+            {t('portfolio.subtitle')}
           </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {deliverables.map((item, i) => (
             <motion.div
-              key={item.title}
+              key={i}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}

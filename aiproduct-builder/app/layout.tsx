@@ -38,6 +38,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+import { LanguageProvider } from '@/context/LanguageContext'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,7 +60,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased bg-[#0a0a0a] text-white">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <Analytics />
       </body>
     </html>

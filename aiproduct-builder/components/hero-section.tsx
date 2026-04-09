@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Clock, Rocket, DollarSign } from "lucide-react"
 import { AnimatedTerminal } from "@/components/animated-terminal"
+import { useLanguage } from "@/context/LanguageContext"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,6 +17,8 @@ const fadeUp = {
 }
 
 export function HeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
       {/* Background gradient */}
@@ -46,7 +49,7 @@ export function HeroSection() {
                 className="border-[#7c3aed]/50 bg-[#7c3aed]/10 text-[#c4b5fd] px-4 py-2 text-sm gap-2 w-fit"
               >
                 <span className="size-2 rounded-full bg-[#7c3aed] animate-blink inline-block" />
-                {"Solo 18 cupos disponibles \u2014 Cohort #1"}
+                {t('hero.badge')}
               </Badge>
             </motion.div>
 
@@ -57,9 +60,9 @@ export function HeroSection() {
               custom={1}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white text-balance"
             >
-              {"Conv\u00e9rtete en un"}{" "}
+              {t('hero.title_start')}{" "}
               <span className="text-[#7c3aed]">AI Product Builder</span>{" "}
-              by Protolylat
+              {t('hero.title_end')}
             </motion.h1>
 
             <motion.p
@@ -69,10 +72,7 @@ export function HeroSection() {
               custom={2}
               className="text-lg text-[#a1a1aa] leading-relaxed max-w-xl"
             >
-              Un programa intensivo de 8 semanas para fusionar la{" "}
-              {"visi\u00f3n estrat\u00e9gica"} de producto con la agilidad del Visual Coding.
-              De no saber programar, a construir aplicaciones reales usando la{" "}
-              {"IA como tu copiloto."}
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -87,7 +87,7 @@ export function HeroSection() {
                   size="lg"
                   className="bg-[#22c55e] hover:bg-[#16a34a] text-lg px-8 py-6 font-semibold shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] transition-all"
                 >
-                  <span className="text-black">Quiero ser AI Product Builder</span>
+                  <span className="text-black">{t('hero.cta_primary')}</span>
                 </Button>
               </a>
               <a href="#curriculum">
@@ -96,7 +96,7 @@ export function HeroSection() {
                   size="lg"
                   className="border-[#27272a] text-white hover:bg-[#1a1a1a] hover:text-white text-lg px-8 py-6"
                 >
-                  {"Ver el programa completo \u2193"}
+                  {t('hero.cta_secondary')}
                 </Button>
               </a>
             </motion.div>
@@ -110,19 +110,19 @@ export function HeroSection() {
             >
               <span className="flex items-center gap-1.5">
                 <CheckCircle className="size-4 text-[#22c55e]" />
-                20 cupos
+                {t('hero.stats.spots')}
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="size-4 text-[#7c3aed]" />
-                Cierra 31 de Mayo
+                {t('hero.stats.deadline')}
               </span>
               <span className="flex items-center gap-1.5">
                 <Rocket className="size-4 text-[#7c3aed]" />
-                Start: 1 de Junio
+                {t('hero.stats.start')}
               </span>
               <span className="flex items-center gap-1.5">
                 <DollarSign className="size-4 text-[#22c55e]" />
-                {"Garant\u00eda incluida"}
+                {t('hero.stats.guarantee')}
               </span>
             </motion.div>
           </div>

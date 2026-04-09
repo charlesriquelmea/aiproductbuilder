@@ -1,143 +1,129 @@
-"use client";
+"use client"
 
-import {
-    Badge
-} from "@/components/ui/badge";
-import {
-    Card,
-    CardHeader,
-    CardTitle,
-    CardContent
-} from "@/components/ui/card";
-import {
-    CheckCircle,
-    Code,
-    Workflow,
-    Bot
-} from "lucide-react";
+import { motion } from "framer-motion"
+import { Check, ArrowUpRight, DollarSign } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export default function ROISection() {
-    return (
-        <section className="w-full bg-[#0a0a0a] text-zinc-100 py-16 px-6">
-            <div className="max-w-6xl mx-auto space-y-8">
-                {/* Encabezado */}
-                <div className="text-center space-y-4">
-                    <Badge className="bg-linear-to-r from-violet-600 to-purple-500 text-white px-3 py-1 rounded-full">
-                        EL RETORNO DE TU INVERSIÓN (ROI)
-                    </Badge>
-                    {/* <p className="text-[#7c3aed] font-mono text-sm mb-3 uppercase tracking-wider">
-                        EL RETORNO DE TU INVERSIÓN (ROI)
-                    </p> 
-                    */}
+    const { t } = useLanguage()
 
-                    <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#c4b5fd] via-indigo-400 to-blue-400">
-                        No compras un curso. Construyes un portafolio rentable desde el Día 1.
-                    </h1>
-                    <p className="text-lg text-[#a1a1aa] max-w-2xl mx-auto">
-                        La educación tradicional te da un diploma. El AI Engineer Builder te entrega proyectos reales con demanda inmediata.
-                        En 8 semanas, tendrás un portafolio valorizado en más de <span className="font-bold text-green-400">$6500</span>.
+    const marketValueItems = [0, 1, 2].map(i => ({
+        title: t(`roi.items.${i}.title`),
+        price: t(`roi.items.${i}.price`),
+        desc: t(`roi.items.${i}.desc`),
+    }))
+
+    const checklist = [0, 1, 2].map(i => t(`roi.checklist.${i}`))
+
+    return (
+        <section className="py-24 relative overflow-hidden">
+            <div className="absolute inset-0 bg-zinc-950" />
+            <div className="absolute inset-0 bg-linear-to-b
+             from-violet-500/5 via-transparent to-transparent" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
+                <div className="text-center mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-3 py-1 
+                        rounded-full bg-violet-500/10 border border-violet-500/20
+                         text-violet-400 text-xs font-bold uppercase tracking-widest mb-6"
+                    >
+                        <p className="" />
+                        {t('roi.tag')}
+                    </motion.div>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-zinc-50 mb-6 tracking-tight">
+                        {t('roi.title')}
+                    </h2>
+                    <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                        {t('roi.description')}{" "}
+                        <span className="text-violet-400 font-bold">$6,500 USD</span>.
                     </p>
                 </div>
 
-                {/* Grid principal */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {/* Columna Izquierda */}
-                    <div className="space-y-6">
-                        <h2 className="text-xl font-semibold text-[#c4b5fd]">El Valor de Mercado</h2>
-
-                        {/* Fila 1 */}
-                        <div className="border border-violet-500/40 rounded-lg p-4 bg-violet-950/20 space-y-2">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <Code className="w-6 h-6 text-[#c4b5fd]" />
-                                    <span className="font-medium">Landing Pages en Next.js</span>
-                                </div>
-                                <span className="text-green-400 font-semibold">Desde $1500</span>
-                            </div>
-                            <p className="text-sm text-[#a1a1aa] leading-relaxed">
-                                Sitios web profesionales y de alta conversión, optimizados para producción y analítica.
-                                Representan tu primera entrega profesional y validan tu capacidad de generar ingresos inmediatos en el mercado freelance.
-                            </p>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    {/* Market Value Cards */}
+                    <div className="lg:col-span-8 space-y-4">
+                        <div className="flex items-center gap-3 mb-6">
+                            <h3 className="text-xl font-bold text-zinc-50">{t('roi.market_value_title')}</h3>
+                            <div className="h-px flex-1 bg-zinc-800" />
                         </div>
 
-                        {/* Fila 2 */}
-                        <div className="border border-indigo-500/35 rounded-lg p-4 bg-indigo-950/20 space-y-2">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <Workflow className="w-6 h-6 text-indigo-400" />
-                                    <span className="font-medium">Workflows Automatizados (n8n)</span>
-                                </div>
-                                <span className="text-green-400 font-semibold">Desde $2000</span>
-                            </div>
-                            <p className="text-sm text-[#a1a1aa] leading-relaxed">
-                                Diseñarás flujos que conectan aplicaciones, reducen tareas repetitivas y aumentan la eficiencia operativa.
-                                Cada implementación se traduce en un ahorro tangible para el cliente, justificando el valor de mercado y tu facturación inmediata.
-                            </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+                            {marketValueItems.map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="group p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl hover:border-violet-500/30 transition-all"
+                                >
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                        <div className="space-y-1">
+                                            <h4 className="text-lg font-bold text-zinc-50 group-hover:text-violet-400 transition-colors">
+                                                {item.title}
+                                            </h4>
+                                            <p className="text-sm text-zinc-400 leading-relaxed max-w-xl">
+                                                {item.desc}
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-col items-end">
+                                            <span className="text-xl font-black text-zinc-50">{item.price}</span>
+                                            <span className="text-[10px] text-zinc-500 uppercase tracking-widest">USD Est.</span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </div>
 
-                        {/* Fila 3 */}
-                        <div className="border border-teal-500/30 rounded-lg p-4 bg-indigo-950/20 space-y-2">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <Bot className="w-6 h-6 text-teal-400" />
-                                    <span className="font-medium">Web Apps con IA</span>
-                                </div>
-                                <span className="text-green-400 font-semibold">Desde $3000</span>
-                            </div>
-                            <p className="text-sm text-[#a1a1aa] leading-relaxed">
-                                Construirás aplicaciones web modernas integradas con modelos de IA para resolver problemas reales:
-                                cotizadores inteligentes, formularios dinámicos y directorios con búsqueda avanzada.
-                                Estas soluciones premium posicionan tu portafolio en el rango más alto del mercado.
-                            </p>
-                        </div>
-
-                        {/* Valor total */}
-                        <div className="border border-violet-500/40 rounded-lg p-6 bg-gradient-to-r from-violet-950/40 to-indigo-950/40 text-center">
-                            <p className="text-lg font-semibold">
-                                Valor Total del Portafolio:{" "}
-                                <span className="text-green-400 font-bold">$6500</span>
-                            </p>
+                        <div className="mt-8 p-6 bg-violet-500/5 border border-violet-500/20 rounded-2xl flex items-center justify-between">
+                            <span className="text-zinc-400 font-medium">{t('roi.total_value_label')}</span>
+                            <span className="text-3xl font-black text-violet-400">$6,500+</span>
                         </div>
                     </div>
 
-                    {/* Columna Derecha */}
-                    <Card className="bg-[#111111] border border-violet-500/40 shadow-lg">
-                        <CardHeader>
-                            <CardTitle className="text-2xl font-bold text-[#c4b5fd]">
-                                Tu Inversión
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <div className="text-[#a1a1aa] space-y-2">
-                                <p>
-                                    Inversión:{" "}
-                                    <span className="line-through text-red-400">$1897</span>{" "}
-                                    {/* <span className="font-bold text-green-400">$1497 USD por referido</span> */}
-                                    <span className="font-bold text-green-400">$1497 USD (Solo por referido: Si traes un amigo, familiar y juntos c/u paga) Hasta 3 pagos de $499 USD a 0, 30 y 60 días  (Tarjeta de Crédito)</span>
-                                </p>
+                    {/* Investment Card */}
+                    <div className="lg:col-span-4 mt-13 lg:top-24">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="p-8 bg-zinc-900 border-2 border-violet-500 
+                            rounded-3xl shadow-[0_0_50px_rgba(139,92,246,0.15)]"
+                        >
+                            <h3 className="text-xl font-bold text-zinc-50 mb-2">{t('roi.investment_title')}</h3>
+                            <div className="flex items-baseline gap-2 mb-6">
+                                <span className="text-4xl font-black text-zinc-50">$1,897</span>
+                                <span className="text-zinc-500 font-medium">USD</span>
                             </div>
 
-                            <Badge className="bg-gradient-to-r from-green-500 to-teal-500 text-black font-semibold px-3 py-1 rounded-full">
-                                ROI de 3x a 4x garantizado en habilidades
-                            </Badge>
+                            <div className="space-y-4 mb-8">
+                                {checklist.map((item, i) => (
+                                    <div key={i} className="flex items-start gap-3">
+                                        <div className="mt-1 bg-violet-500/20 rounded-full p-1">
+                                            <Check className="w-3 h-3 text-violet-400" />
+                                        </div>
+                                        <span className="text-sm text-zinc-300 leading-tight">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
 
-                            {/* Checklist */}
-                            <ul className="space-y-3">
-                                <li className="flex items-center gap-2 text-zinc-200">
-                                    <CheckCircle className="w-5 h-5 text-green-400" />
-                                    8 semanas de dedicación
-                                </li>
-                                <li className="flex items-center gap-2 text-zinc-200">
-                                    <CheckCircle className="w-5 h-5 text-green-400" />
-                                    Hasta 3 cuotas sin interés
-                                </li>
-                                <li className="flex items-center gap-2 text-zinc-200">
-                                    <CheckCircle className="w-5 h-5 text-green-400" />
-                                    Capacidad de facturar desde el Día 1
-                                </li>
-                            </ul>
-                        </CardContent>
-                    </Card>
+                            <div className="space-y-4">
+                                <a href="#aplicar" className="block">
+                                    <button className="w-full py-4 bg-violet-500 hover:bg-violet-600 text-zinc-50 font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(139,92,246,0.3)] flex items-center justify-center gap-2 group">
+                                        {t('hero.cta_primary')}
+                                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                    </button>
+                                </a>
+                                <p className="text-[10px] text-center text-zinc-500 uppercase tracking-widest leading-relaxed">
+                                    {t('roi.roi_guarantee')}
+                                </p>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

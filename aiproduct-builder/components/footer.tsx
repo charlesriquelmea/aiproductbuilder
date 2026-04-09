@@ -4,15 +4,18 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Twitter, Linkedin, Instagram } from "lucide-react"
 import { CountdownTimer } from "@/components/countdown-timer"
-
-const links = [
-  { label: "Programa", href: "#curriculum" },
-  { label: "Garantía", href: "#garantia" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "mailto:hola@buskero.com" },
-]
+import { useLanguage } from "@/context/LanguageContext"
 
 export function Footer() {
+  const { t } = useLanguage()
+
+  const links = [
+    { label: t('footer.links.0.label'), href: "#curriculum" },
+    { label: t('footer.links.1.label'), href: "#garantia" },
+    { label: t('footer.links.2.label'), href: "#faq" },
+    { label: t('footer.links.3.label'), href: "mailto:hola@buskero.com" },
+  ]
+
   return (
     <footer className="py-16 border-t border-[#27272a]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -21,8 +24,8 @@ export function Footer() {
           <div className="flex flex-col items-center gap-2">
             <CountdownTimer />
             <p className="text-sm text-[#71717a]">
-              Cierran inscripciones el <span className="text-white font-semibold">31 de Mayo</span>.{" "}
-              Start: <span className="text-white font-semibold">1 de Junio de 2026</span>.{" "}
+              {t('urgency_cta.title')}{" "}
+              {t('urgency_cta.start_label')} <span className="text-white font-semibold">{t('urgency_cta.start_date')}</span>.{" "}
             </p>
           </div>
           <a href="#aplicar">
@@ -30,7 +33,7 @@ export function Footer() {
               size="lg"
               className="bg-[#7c3aed] hover:bg-[#6d28d9] text-lg px-8 py-6 font-semibold shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] transition-all"
             >
-              <span className="text-white">Quiero ser AI Product Builder</span>
+              <span className="text-white">{t('urgency_cta.cta')}</span>
             </Button>
           </a>
         </div>
@@ -40,14 +43,8 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo + tagline */}
           <div className="text-center md:text-left">
-            {/* <span
-              className="text-xl font-bold font-mono text-white"
-              style={{ textShadow: "0 0 20px rgba(124, 58, 237, 0.3)" }}
-            >
-              Buskero
-            </span> */}
             <p className="text-sm text-[#71717a] mt-1">
-              Build with AI. Ship fast. Get paid.
+              {t('footer.tagline')}
             </p>
           </div>
 
@@ -91,7 +88,7 @@ export function Footer() {
         </div>
 
         <p className="text-center text-xs text-[#3f3f46] mt-10">
-          {"\u00a9 2026 Protolytal. Todos los derechos reservados."}
+          {t('footer.rights')}
         </p>
       </div>
     </footer>
