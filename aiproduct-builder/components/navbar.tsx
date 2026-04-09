@@ -62,9 +62,14 @@ export function Navbar() {
           <div className="md:hidden flex items-center gap-4">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 px-2 py-1 rounded-md border border-[#27272a] text-xs font-mono text-[#a1a1aa]"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border
+               border-[#27272a] cursor-pointer
+                text-xs font-mono text-[#a1a1aa] transition-colors"
             >
-              <span>{lang.toUpperCase()}</span>
+              <Globe className="size-3" />
+              <span className={lang === 'es' ? 'text-violet-500 font-bold' : ''}>ES</span>
+              <span className="text-[#3f3f46]">/</span>
+              <span className={lang === 'en' ? 'text-violet-500 font-bold' : ''}>EN</span>
             </button>
             <button
               className="text-white p-2"

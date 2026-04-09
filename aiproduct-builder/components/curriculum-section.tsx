@@ -35,7 +35,7 @@ function LeadCaptureMockup() {
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.3 }}
-          className="w-full md:w-48 p-4 rounded-lg bg-gradient-to-br from-[#1a1a1a] to-[#111111] border border-[#27272a] shadow-xl"
+          className="w-full md:w-48 p-4 rounded-lg bg-linear-to-br from-[#1a1a1a] to-[#111111] border border-[#27272a] shadow-xl"
         >
           <div className="space-y-2">
             <div className="h-2 w-16 bg-[#71717a]/30 rounded" />
@@ -52,7 +52,7 @@ function LeadCaptureMockup() {
         </motion.div>
 
         {/* Arrows and Flow */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2 md:rotate-0 rotate-90 my-2 md:my-0">
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
@@ -71,14 +71,14 @@ function LeadCaptureMockup() {
           transition={{ duration: 0.4, delay: 0.6 }}
           className="flex flex-col items-center gap-2"
         >
-          <div className="size-14 rounded-xl bg-gradient-to-br from-[#22c55e]/20 to-[#16a34a]/10 border border-[#22c55e]/30 flex items-center justify-center">
+          <div className="size-14 rounded-xl bg-linear-to-br from-[#22c55e]/20 to-[#16a34a]/10 border border-[#22c55e]/30 flex items-center justify-center">
             <Table2 className="size-7 text-[#22c55e]" />
           </div>
           <span className="text-xs text-[#71717a] font-mono">Sheets</span>
         </motion.div>
 
         {/* Arrows */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2 md:rotate-0 rotate-90 my-2 md:my-0">
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
@@ -97,7 +97,7 @@ function LeadCaptureMockup() {
           transition={{ duration: 0.4, delay: 0.8 }}
           className="flex flex-col items-center gap-2"
         >
-          <div className="size-14 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-[#ea580c]/10 border border-[#f97316]/30 flex items-center justify-center">
+          <div className="size-14 rounded-xl bg-linear-to-br from-[#f97316]/20 to-[#ea580c]/10 border border-[#f97316]/30 flex items-center justify-center">
             <Mail className="size-7 text-[#f97316]" />
           </div>
           <span className="text-xs text-[#71717a] font-mono">Email</span>
@@ -191,14 +191,14 @@ function DatabaseFlowMockup() {
           >
             <Circle className="size-3 fill-[#7c3aed] text-[#7c3aed]" />
           </motion.div>
-          <div className="w-8 h-0.5 lg:w-0.5 lg:h-8 bg-gradient-to-r lg:bg-gradient-to-b from-[#7c3aed] to-[#22c55e]" />
+          <div className="w-8 h-0.5 lg:w-0.5 lg:h-8 bg-gradient-to-r lg:bg-linear-to-b from-[#7c3aed] to-[#22c55e]" />
           <motion.div 
             whileHover={{ scale: 1.1 }}
             className="size-10 rounded-full bg-[#22c55e]/20 border-2 border-[#22c55e] flex items-center justify-center"
           >
             <Circle className="size-3 fill-[#22c55e] text-[#22c55e]" />
           </motion.div>
-          <div className="w-8 h-0.5 lg:w-0.5 lg:h-8 bg-gradient-to-r lg:bg-gradient-to-b from-[#22c55e] to-[#f97316]" />
+          <div className="w-8 h-0.5 lg:w-0.5 lg:h-8 bg-gradient-to-r lg:bg-linear-to-b from-[#22c55e] to-[#f97316]" />
           <motion.div 
             whileHover={{ scale: 1.1 }}
             className="size-10 rounded-full bg-[#f97316]/20 border-2 border-[#f97316] flex items-center justify-center"
@@ -229,10 +229,10 @@ function AuthPaymentMockup() {
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.3 }}
-          className="w-full md:w-56 p-5 rounded-xl bg-gradient-to-br from-[#1a1a1a] to-[#111111] border border-[#27272a] shadow-2xl relative"
+          className="w-full md:w-56 p-5 rounded-xl bg-linear-to-br from-[#1a1a1a] to-[#111111] border border-[#27272a] shadow-2xl relative"
         >
           <div className="flex items-center justify-center mb-4">
-            <div className="size-10 rounded-full bg-gradient-to-br from-[#7c3aed] to-[#9333ea] flex items-center justify-center">
+            <div className="size-10 rounded-full bg-linear-to-br from-[#7c3aed] to-[#9333ea] flex items-center justify-center">
               <Lock className="size-5 text-white" />
             </div>
           </div>
@@ -267,7 +267,7 @@ function AuthPaymentMockup() {
           transition={{ duration: 0.5, delay: 0.6, type: "spring", stiffness: 200 }}
           className="relative"
         >
-          <div className="px-5 py-4 rounded-xl bg-gradient-to-br from-[#111111] to-[#0a0a0a] border border-[#22c55e]/40 shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+          <div className="px-5 py-4 rounded-xl bg-linear-to-br from-[#111111] to-[#0a0a0a] border border-[#22c55e]/40 shadow-[0_0_30px_rgba(34,197,94,0.15)]">
             <div className="flex items-center gap-3">
               <motion.div 
                 initial={{ scale: 0 }}
@@ -403,7 +403,7 @@ function DeploymentMockup() {
               ]
             }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="size-24 rounded-full bg-gradient-to-br from-[#7c3aed]/20 to-[#9333ea]/10 border border-[#7c3aed]/40 flex items-center justify-center"
+            className="size-24 rounded-full bg-linear-to-br from-[#7c3aed]/20 to-[#9333ea]/10 border border-[#7c3aed]/40 flex items-center justify-center"
           >
             <motion.div
               animate={{ y: [0, -5, 0] }}
@@ -477,7 +477,7 @@ export function CurriculumSection() {
   return (
     <section id="curriculum" className="py-20 md:py-28 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#7c3aed]/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#7c3aed]/5 to-transparent pointer-events-none" />
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -501,7 +501,7 @@ export function CurriculumSection() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line for desktop */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#7c3aed] via-[#22c55e] to-[#c4b5fd]" />
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-[#7c3aed] via-[#22c55e] to-[#c4b5fd]" />
 
           <div className="space-y-12 lg:space-y-24">
             {sprints.map((sprint, index) => (

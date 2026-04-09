@@ -28,7 +28,7 @@ export function TransformationSection() {
 
   return (
     <section className="py-20 md:py-28 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -61,7 +61,7 @@ export function TransformationSection() {
               }`}
             >
               {col.variant === "good" && (
-                <div className="absolute inset-0 bg-gradient-to-br from-[#7c3aed]/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-br from-[#7c3aed]/5 to-transparent pointer-events-none" />
               )}
               <div className="relative">
                 <div className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6 border ${

@@ -212,7 +212,7 @@ export function HeroUrgencySection() {
 
         {/* BLOQUE 2 & 3 — Wake-up Call & Subheadline */}
         <div className="text-center space-y-8">
-          <h1 className="text-4xl md:text-6xl font-bold max-w-4xl mx-auto leading-[1.1] tracking-tight text-balance">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold max-w-4xl mx-auto leading-[1.1] tracking-tight text-balance">
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
@@ -238,7 +238,7 @@ export function HeroUrgencySection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.7 }}
-            className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto text-balance leading-relaxed"
+            className="text-zinc-400 text-base md:text-xl max-w-2xl mx-auto text-balance leading-relaxed"
           >
             {t('urgency.subheadline')}
           </motion.p>
@@ -252,7 +252,7 @@ export function HeroUrgencySection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative group border border-[#2dd4bf]/40 bg-zinc-900 rounded-2xl p-8 shadow-[0_0_20px_rgba(45,212,191,0.05)] hover:shadow-[0_0_40px_rgba(45,212,191,0.1)] transition-all"
+            className="relative group border border-[#2dd4bf]/40 bg-zinc-900 rounded-2xl p-6 sm:p-8 shadow-[0_0_20px_rgba(45,212,191,0.05)] hover:shadow-[0_0_40px_rgba(45,212,191,0.1)] transition-all"
           >
             <div className="absolute inset-0 bg-[#2dd4bf]/5 rounded-2xl pointer-events-none" />
             <Badge className="bg-[#2dd4bf]/10 text-[#2dd4bf] border-[#2dd4bf]/20 text-[10px] uppercase tracking-wider mb-6">
@@ -278,7 +278,7 @@ export function HeroUrgencySection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative border border-red-500/40 bg-red-500/5 rounded-2xl p-8 transition-all"
+            className="relative border border-red-500/40 bg-red-500/5 rounded-2xl p-6 sm:p-8 transition-all"
           >
             <Badge className="bg-red-500/10 text-[#f87171] border-red-500/20 text-[10px] uppercase tracking-wider mb-6">
               ✦ {t('urgency.later_tag')}

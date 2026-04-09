@@ -67,7 +67,7 @@ export function ApplicationForm() {
   if (submitted) {
     return (
       <section id="aplicar" className="py-20 md:py-28 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
         <div className="relative mx-auto max-w-2xl px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -92,7 +92,7 @@ export function ApplicationForm() {
 
   return (
     <section id="aplicar" className="py-20 md:py-28 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
 
       <div className="relative mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -170,7 +170,7 @@ export function ApplicationForm() {
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && canProceed) handleNext()
                   }}
-                  className="w-full bg-[#0f0f0f] border border-[#27272a] rounded-xl px-5 py-4 text-white text-lg placeholder:text-[#3f3f46] focus:outline-none focus:border-[#7c3aed] transition-colors"
+                  className="w-full bg-[#0f0f0f] border border-[#27272a] rounded-xl px-4 py-4 text-white text-base md:text-lg placeholder:text-[#3f3f46] focus:outline-none focus:border-[#7c3aed] transition-colors"
                   
                 />
               )}
