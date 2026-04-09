@@ -98,7 +98,7 @@ export function OfferSection() {
                 <Zap className="size-4 text-[#f59e0b]" />
                 <span className="text-[#a1a1aa]">
                   Solo quedan{" "}
-                  <span className="text-white font-semibold font-mono">{20 - cuposTaken}</span>{" "}
+                  <span className="text-white font-semibold font-mono">18</span>{" "}
                   de 20 cupos disponibles
                 </span>
               </div>

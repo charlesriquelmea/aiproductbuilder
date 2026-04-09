@@ -46,7 +46,7 @@ export function HeroSection() {
                 className="border-[#7c3aed]/50 bg-[#7c3aed]/10 text-[#c4b5fd] px-4 py-2 text-sm gap-2 w-fit"
               >
                 <span className="size-2 rounded-full bg-[#7c3aed] animate-blink inline-block" />
-                {"Solo 20 cupos disponibles \u2014 Cohort #1"}
+                {"Solo 18 cupos disponibles \u2014 Cohort #1"}
               </Badge>
             </motion.div>
 
@@ -114,11 +114,11 @@ export function HeroSection() {
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="size-4 text-[#7c3aed]" />
-                Cierra 6 de Abril
+                Cierra 31 de Mayo
               </span>
               <span className="flex items-center gap-1.5">
                 <Rocket className="size-4 text-[#7c3aed]" />
-                Start: 7 de Abril
+                Start: 1 de Junio
               </span>
               <span className="flex items-center gap-1.5">
                 <DollarSign className="size-4 text-[#22c55e]" />

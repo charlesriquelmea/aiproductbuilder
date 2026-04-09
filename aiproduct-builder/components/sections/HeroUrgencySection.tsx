@@ -76,9 +76,9 @@ const TechMarquee = () => {
           className="flex gap-4 whitespace-nowrap px-4"
         >
           {list.map((tech, i) => (
-            <Badge 
-              key={i} 
-              variant="outline" 
+            <Badge
+              key={i}
+              variant="outline"
               className="bg-zinc-800 text-zinc-300 text-xs font-mono px-3 py-1 rounded-full border border-zinc-700 h-8"
             >
               {tech}
@@ -91,7 +91,7 @@ const TechMarquee = () => {
 }
 
 const CountdownTimer = () => {
-  const targetDate = new Date("2026-04-06T23:59:00-04:00") // ET timezone (UTC-4 in April)
+  const targetDate = new Date("2026-05-31T23:59:00-04:00") // ET timezone (UTC-4 in April)
   const [timeLeft, setTimeLeft] = useState<{ dd: number; hh: number; mm: number; ss: number } | null>(null)
   const [isFinished, setIsFinished] = useState(false)
 
@@ -182,7 +182,7 @@ const CountdownTimer = () => {
 
 export function HeroUrgencySection() {
   const shouldReduceMotion = useReducedMotion()
-  
+
   // Custom scroll target for the button
   const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -195,9 +195,9 @@ export function HeroUrgencySection() {
   return (
     <section className="bg-[#0a0a0a] text-[#fafafa] font-sans py-24 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-24">
-        
+
         {/* BLOQUE 1 — Scarcity Badge */}
-        <motion.div 
+        <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -206,7 +206,7 @@ export function HeroUrgencySection() {
           <Badge className="bg-red-500/10 border-red-500/30 text-[#f87171] hover:bg-red-500/15 transition-colors px-4 py-1.5 rounded-full flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span className="text-xs sm:text-sm font-medium">
-              Solo 3 cupos restantes · Cohort #1 cierra HOY — 6 de Abril
+              Solo 18 cupos restantes · Cohort #1 cierra 31 de Mayo
             </span>
           </Badge>
         </motion.div>
@@ -233,7 +233,7 @@ export function HeroUrgencySection() {
               </motion.span>
             ))}
           </h1>
-          
+
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -258,7 +258,7 @@ export function HeroUrgencySection() {
           >
             <div className="absolute inset-0 bg-[#2dd4bf]/5 rounded-2xl pointer-events-none" />
             <Badge className="bg-[#2dd4bf]/10 text-[#2dd4bf] border-[#2dd4bf]/20 text-[10px] uppercase tracking-wider mb-6">
-              ✦ Abril 2026 — Actúas ahora
+              ✦ Mayo 2026 — Actúas ahora
             </Badge>
             <ul className="space-y-4">
               {[
@@ -305,11 +305,21 @@ export function HeroUrgencySection() {
         </div>
 
         {/* BLOQUE 5 — COI Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto pt-8">
-          <CountUpNumber value={800} prefix="$" suffix="" label="por landing subcontratada · para siempre" />
-          <CountUpNumber value={4} suffix=" sem" label="de latencia por cada proyecto dependiente de un dev" />
-          <CountUpNumber value={8} suffix=" sem" label="de aprendizaje acelerado (vs 18 meses)" />
+        <div className="p-5">
+          {/* Grupo de los primeros 3 CountUpNumber */}
+          <div className="col-span-1 md:col-span-3 grid grid-cols-1 md:grid-cols-3 mb-4 gap-6">
+            <CountUpNumber value={1500} prefix="Dedsde $" label="por landing subcontratada" />
+            <CountUpNumber value={2000} prefix="Dedsde $" label="por cada automatización en n8n subcontratada" />
+            <CountUpNumber value={3000} prefix="Dedsde $" label="por cada Web App Básica subcontratada" />
+          </div>
+
+          {/* Los otros dos CountUpNumber fuera del grupo */}
+          <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <CountUpNumber value={4} suffix=" sem" label="de latencia por cada proyecto dependiente de un dev" />
+            <CountUpNumber value={8} suffix=" sem" label="de aprendizaje acelerado (vs 18 meses)" />
+          </div>
         </div>
+
 
         {/* BLOQUE 6 — Tech Marquee */}
         <TechMarquee />
@@ -331,7 +341,7 @@ export function HeroUrgencySection() {
               whileTap={{ scale: 0.98 }}
             >
               <Link href="#aplicar" onClick={handleCtaClick}>
-                <Button 
+                <Button
                   className="w-full h-16 rounded-2xl font-bold text-lg bg-[#2dd4bf] text-black hover:bg-[#2dd4bf]/90 shadow-[0_0_24px_rgba(45,212,191,0.2)] hover:shadow-[0_0_32px_rgba(45,212,191,0.4)] transition-all flex items-center justify-center gap-3 group"
                   aria-label="Asegurar mi cupo en el Cohort #1"
                 >
@@ -352,7 +362,7 @@ export function HeroUrgencySection() {
               </div>
               <div className="flex items-center justify-center gap-2">
                 <Users className="w-3.5 h-3.5 text-red-400/70" />
-                <span>Solo 20 cupos disponibles en el Cohort #1</span>
+                <span>Solo 18 cupos disponibles en el Cohort #1</span>
               </div>
             </div>
           </div>
