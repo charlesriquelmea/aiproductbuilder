@@ -4,8 +4,10 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { CountdownTimer } from "@/components/countdown-timer"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function UrgencyCTASection() {
+  const { t } = useLanguage()
   const [cuposTaken, setCuposTaken] = useState(0)
 
   useEffect(() => {
@@ -41,10 +43,10 @@ export function UrgencyCTASection() {
 
           <div className="space-y-2">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-balance">
-              Cierran inscripciones el 31 de Mayo.
+              {t('urgency_cta.title')}
             </h2>
             <p className="text-lg text-[#a1a1aa]">
-              Start: <span className="text-white font-semibold">1 de Junio de 2026</span>
+              {t('urgency_cta.start_label')} <span className="text-white font-semibold">{t('urgency_cta.start_date')}</span>
             </p>
           </div>
 
@@ -52,9 +54,9 @@ export function UrgencyCTASection() {
           <div className="flex items-center gap-3" suppressHydrationWarning>
             <span className="size-3 rounded-full bg-red-500 animate-pulse" />
             <span className="text-[#a1a1aa]">
-              Solo 20 cupos{" "}
+              {t('urgency_cta.spots_label')}{" "}
               <span className="text-white font-mono font-semibold">2</span>{" "}
-              ya tomados
+              {t('urgency_cta.spots_taken')}
             </span>
           </div>
 
@@ -64,12 +66,12 @@ export function UrgencyCTASection() {
               size="lg"
               className="bg-[#22c55e] hover:bg-[#16a34a] text-lg px-10 py-7 font-semibold shadow-[0_0_40px_rgba(34,197,94,0.3)] hover:shadow-[0_0_60px_rgba(34,197,94,0.5)] transition-all"
             >
-              <span className="text-black">Quiero ser AI Product Builder</span>
+              <span className="text-black">{t('urgency_cta.cta')}</span>
             </Button>
           </a>
 
           <p className="text-sm text-[#71717a]">
-            $1,897 USD o 3x $632 (a 0, 30 y 60 días)
+            {t('urgency_cta.price_footer')}
           </p>
         </motion.div>
       </div>

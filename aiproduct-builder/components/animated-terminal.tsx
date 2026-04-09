@@ -3,28 +3,30 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Palette, Bot, Zap } from "lucide-react"
-
-const lines = [
-  { text: "$ init --stack vibe-coding", delay: 0, color: "text-[#22c55e]" },
-  { text: "  Connecting to v0.app...", delay: 800, color: "text-[#71717a]" },
-  { text: "  UI generated in 4.2s", delay: 1600, color: "text-white" },
-  { text: "  Sending to Claude Code...", delay: 2400, color: "text-[#71717a]" },
-  { text: "  Business logic deployed", delay: 3200, color: "text-white" },
-  { text: "  n8n workflow activated", delay: 4000, color: "text-[#71717a]" },
-  { text: "  App live at app", delay: 4800, color: "text-[#22c55e]" },
-  { text: "", delay: 5600, color: "text-white" },
-  { text: "  Ready to ship.", delay: 5800, color: "text-[#7c3aed]" },
-]
+import { useLanguage } from "@/context/LanguageContext"
 
 export function AnimatedTerminal() {
+  const { t } = useLanguage()
   const [visibleLines, setVisibleLines] = useState(0)
+
+  const lines = [
+    { text: t('terminal.line1'), delay: 0, color: "text-[#22c55e]" },
+    { text: t('terminal.line2'), delay: 800, color: "text-[#71717a]" },
+    { text: t('terminal.line3'), delay: 1600, color: "text-white" },
+    { text: t('terminal.line4'), delay: 2400, color: "text-[#71717a]" },
+    { text: t('terminal.line5'), delay: 3200, color: "text-white" },
+    { text: t('terminal.line6'), delay: 4000, color: "text-[#71717a]" },
+    { text: t('terminal.line7'), delay: 4800, color: "text-[#22c55e]" },
+    { text: "", delay: 5600, color: "text-white" },
+    { text: t('terminal.line9'), delay: 5800, color: "text-[#7c3aed]" },
+  ]
 
   useEffect(() => {
     const timers = lines.map((line, i) =>
       setTimeout(() => setVisibleLines(i + 1), line.delay)
     )
     return () => timers.forEach(clearTimeout)
-  }, [])
+  }, [t]) // Re-run if translations change
 
   return (
     <div className="relative">

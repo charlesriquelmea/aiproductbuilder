@@ -1,10 +1,10 @@
-"use client"
-
 import { useState, useEffect } from "react"
+import { useLanguage } from "@/context/LanguageContext"
 
 const TARGET_DATE = new Date("2026-05-31T23:59:59").getTime()
 
 export function CountdownTimer({ compact = false }: { compact?: boolean }) {
+  const { t } = useLanguage()
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -33,26 +33,26 @@ export function CountdownTimer({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
       <div className="flex items-center gap-1.5 font-mono text-sm" suppressHydrationWarning>
-        <TimeUnit value={timeLeft.days} label="D" compact />
+        <TimeUnit value={timeLeft.days} label={t('common.days_short')} compact />
         <span className="text-[#71717a]">:</span>
-        <TimeUnit value={timeLeft.hours} label="H" compact />
+        <TimeUnit value={timeLeft.hours} label={t('common.hours_short')} compact />
         <span className="text-[#71717a]">:</span>
-        <TimeUnit value={timeLeft.minutes} label="M" compact />
+        <TimeUnit value={timeLeft.minutes} label={t('common.minutes_short')} compact />
         <span className="text-[#71717a]">:</span>
-        <TimeUnit value={timeLeft.seconds} label="S" compact />
+        <TimeUnit value={timeLeft.seconds} label={t('common.seconds_short')} compact />
       </div>
     )
   }
 
   return (
     <div className="flex items-center gap-3 md:gap-4" suppressHydrationWarning>
-      <TimeUnit value={timeLeft.days} label="Dias" />
+      <TimeUnit value={timeLeft.days} label={t('common.days')} />
       <span className="text-2xl text-[#71717a] font-light">:</span>
-      <TimeUnit value={timeLeft.hours} label="Hrs" />
+      <TimeUnit value={timeLeft.hours} label={t('common.hours')} />
       <span className="text-2xl text-[#71717a] font-light">:</span>
-      <TimeUnit value={timeLeft.minutes} label="Min" />
+      <TimeUnit value={timeLeft.minutes} label={t('common.minutes')} />
       <span className="text-2xl text-[#71717a] font-light">:</span>
-      <TimeUnit value={timeLeft.seconds} label="Seg" />
+      <TimeUnit value={timeLeft.seconds} label={t('common.seconds')} />
     </div>
   )
 }

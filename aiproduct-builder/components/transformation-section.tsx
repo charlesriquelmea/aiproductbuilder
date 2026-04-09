@@ -2,29 +2,30 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight, X, Check } from "lucide-react"
-
-const comparativa = [
-  {
-    col: "Usuario de ChatGPT",
-    rows: [
-      { label: "El Humano", text: "Pide que le hagan el trabajo." },
-      { label: "La IA", text: "Ejecuta a ciegas (y a menudo falla)." },
-      { label: "El Resultado", text: "Un fragmento de código aislado o un texto genérico. Dependencia total." },
-    ],
-    variant: "bad" as const,
-  },
-  {
-    col: "Vibe Coder (AI Product Builder)",
-    rows: [
-      { label: "El Humano", text: "Define el problema, toma decisiones de negocio y dirige la visión creativa." },
-      { label: "La IA", text: "Sugiere soluciones, explica conceptos y escribe el código táctico." },
-      { label: "El Resultado", text: "Un sistema completo, integrado y desplegado en producción. El humano domina la arquitectura." },
-    ],
-    variant: "good" as const,
-  },
-]
+import { useLanguage } from "@/context/LanguageContext"
 
 export function TransformationSection() {
+  const { t } = useLanguage()
+
+  const comparativa = [
+    {
+      col: t('transformation.bad_col'),
+      rows: [0, 1, 2].map(i => ({
+        label: t(`transformation.labels.${i}`),
+        text: t(`transformation.bad_rows.${i}`)
+      })),
+      variant: "bad" as const,
+    },
+    {
+      col: t('transformation.good_col'),
+      rows: [0, 1, 2].map(i => ({
+        label: t(`transformation.labels.${i}`),
+        text: t(`transformation.good_rows.${i}`)
+      })),
+      variant: "good" as const,
+    },
+  ]
+
   return (
     <section className="py-20 md:py-28 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
@@ -38,17 +39,17 @@ export function TransformationSection() {
           className="text-center mb-14"
         >
           <p className="text-[#7c3aed] font-mono text-sm mb-3 uppercase tracking-wider">
-            La diferencia
+            {t('transformation.tag')}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white text-balance">
-            La IA no te reemplaza, te potencia como arquitecto.
+            {t('transformation.title')}
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {comparativa.map((col, i) => (
             <motion.div
-              key={col.col}
+              key={i}
               initial={{ opacity: 0, x: i === 0 ? -20 : 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -74,8 +75,8 @@ export function TransformationSection() {
                   </span>
                 </div>
                 <ul className="space-y-5">
-                  {col.rows.map((row) => (
-                    <li key={row.label} className="flex items-start gap-3">
+                  {col.rows.map((row, j) => (
+                    <li key={j} className="flex items-start gap-3">
                       {col.variant === "bad"
                         ? <X className="size-4 text-red-500/60 mt-0.5 shrink-0" />
                         : <Check className="size-4 text-[#22c55e] mt-0.5 shrink-0" />
@@ -107,9 +108,7 @@ export function TransformationSection() {
           <div className="bg-gradient-to-r from-[#7c3aed]/10 via-[#7c3aed]/5 to-[#7c3aed]/10 border border-[#7c3aed]/20 rounded-xl p-6 md:p-8 text-center">
             <ArrowRight className="size-6 text-[#7c3aed] mx-auto mb-4" />
             <p className="text-lg md:text-xl text-white font-medium leading-relaxed">
-              En 8 semanas, pasarás de no saber programar a construir aplicaciones
-              reales usando{" "}
-              <span className="text-[#7c3aed] font-semibold">IA como tu copiloto</span>
+              {t('transformation.promise')}
             </p>
           </div>
         </motion.div>

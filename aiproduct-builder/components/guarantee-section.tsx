@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion"
 import { ShieldCheck } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function GuaranteeSection() {
+  const { t } = useLanguage()
   return (
     <section className="py-20 md:py-28 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -22,19 +24,18 @@ export function GuaranteeSection() {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-balance">
-            {"Garant\u00eda de Inversi\u00f3n Segura"}
+            {t('guarantee.title')}
           </h2>
 
           <div className="bg-[#111111] border border-[#22c55e]/20 rounded-2xl p-8 md:p-10">
             <p className="text-lg text-[#e4e4e7] leading-relaxed mb-6">
-              Si completas el 100% de los proyectos semanales y no construyes al menos
-              3 portafolios funcionales al final del programa, te incluimos en el{" "}
+              {t('guarantee.description')}{" "}
               <span className="text-[#22c55e] font-semibold">
-                {"pr\u00f3ximo cohort completamente gratis"}
+                {t('guarantee.free_next')}
               </span>.
             </p>
             <p className="text-[#7c3aed] font-semibold text-lg">
-              Queremos que ganes. Punto.
+              {t('guarantee.footer')}
             </p>
           </div>
         </motion.div>

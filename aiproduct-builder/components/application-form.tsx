@@ -4,61 +4,49 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ArrowLeft, Check, Send } from "lucide-react"
-
-const questions = [
-  {
-    id: "name",
-    question: "\u00bfC\u00f3mo te llamas?",
-    placeholder: "Tu nombre completo",
-    type: "text" as const,
-  },
-  {
-    id: "email",
-    question: "\u00bfCu\u00e1l es tu email?",
-    placeholder: "tu@email.com",
-    type: "email" as const,
-  },
-  {
-    id: "experience",
-    question: "\u00bfTienes experiencia programando?",
-    placeholder: "",
-    type: "select" as const,
-    options: [
-      "Cero experiencia",
-      "He hecho tutoriales b\u00e1sicos",
-      "Entiendo conceptos pero no puedo construir",
-      "Tengo algo de experiencia (no-code o similares)",
-    ],
-  },
-  {
-    id: "motivation",
-    question: "\u00bfQu\u00e9 te motiva a aprender Vibe Coding?",
-    placeholder: "",
-    type: "select" as const,
-    options: [
-      "Quiero cambiar de carrera a tech",
-      "Quiero construir mi propio producto",
-      "Quiero ganar m\u00e1s como freelancer",
-      "Quiero agregar tech a mi trabajo actual",
-    ],
-  },
-  {
-    id: "commitment",
-    question: "\u00bfPuedes dedicar 8-10 horas por semana?",
-    placeholder: "",
-    type: "select" as const,
-    options: [
-      "S\u00ed, totalmente",
-      "Creo que s\u00ed, con algo de esfuerzo",
-      "No estoy seguro/a",
-    ],
-  },
-]
+import { useLanguage } from "@/context/LanguageContext"
 
 export function ApplicationForm() {
+  const { t } = useLanguage()
   const [currentStep, setCurrentStep] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
+
+  const questions = [
+    {
+      id: "name",
+      question: t('application.questions.0.question'),
+      placeholder: t('application.questions.0.placeholder'),
+      type: "text" as const,
+    },
+    {
+      id: "email",
+      question: t('application.questions.1.question'),
+      placeholder: t('application.questions.1.placeholder'),
+      type: "email" as const,
+    },
+    {
+      id: "experience",
+      question: t('application.questions.2.question'),
+      placeholder: "",
+      type: "select" as const,
+      options: [0, 1, 2, 3].map(i => t(`application.questions.2.options.${i}`)),
+    },
+    {
+      id: "motivation",
+      question: t('application.questions.3.question'),
+      placeholder: "",
+      type: "select" as const,
+      options: [0, 1, 2, 3].map(i => t(`application.questions.3.options.${i}`)),
+    },
+    {
+      id: "commitment",
+      question: t('application.questions.4.question'),
+      placeholder: "",
+      type: "select" as const,
+      options: [0, 1, 2].map(i => t(`application.questions.4.options.${i}`)),
+    },
+  ]
 
   const question = questions[currentStep]
   const isLast = currentStep === questions.length - 1
@@ -91,14 +79,10 @@ export function ApplicationForm() {
               <Check className="size-8 text-[#22c55e]" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-3">
-              {"Aplicaci\u00f3n recibida"}
+              {t('application.received_title')}
             </h3>
             <p className="text-[#a1a1aa] leading-relaxed">
-              {"Gracias, "}
-              <span className="text-white font-medium">{answers.name}</span>
-              {". Te contactaremos a "}
-              <span className="text-white font-medium">{answers.email}</span>
-              {" con los pr\u00f3ximos pasos."}
+              {t('application.received_desc', { name: answers.name, email: answers.email })}
             </p>
           </motion.div>
         </div>
@@ -119,10 +103,10 @@ export function ApplicationForm() {
           className="text-center mb-10"
         >
           <p className="text-[#7c3aed] font-mono text-sm mb-3 uppercase tracking-wider">
-            {"Aplicaci\u00f3n"}
+            {t('application.tag')}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white text-balance">
-            Aplica al Cohort #1
+            {t('application.title')}
           </h2>
         </motion.div>
 
@@ -202,7 +186,7 @@ export function ApplicationForm() {
               className="text-[#71717a] hover:text-white disabled:opacity-30"
             >
               <ArrowLeft className="size-4 mr-2" />
-              {"Atr\u00e1s"}
+              {t('application.back_btn')}
             </Button>
 
             <Button
@@ -216,12 +200,12 @@ export function ApplicationForm() {
             >
               {isLast ? (
                 <>
-                  <span className="text-white">Enviar</span>
+                  <span className="text-white">{t('application.send_btn')}</span>
                   <Send className="size-4 ml-2" />
                 </>
               ) : (
                 <>
-                  <span className="text-white">Siguiente</span>
+                  <span className="text-white">{t('application.next_btn')}</span>
                   <ArrowRight className="size-4 ml-2" />
                 </>
               )}

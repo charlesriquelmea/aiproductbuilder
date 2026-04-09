@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Check, X, ArrowRight, ShieldCheck, CreditCard, Users, Clock } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/context/LanguageContext"
 
 // --- Animation Variants ---
 const fadeUp = {
@@ -16,15 +17,6 @@ const fadeUp = {
     y: 0,
     transition: { duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
   }),
-}
-
-const letterAnimation = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-  },
 }
 
 // --- Components ---
@@ -58,6 +50,7 @@ const CountUpNumber = ({ value, label, prefix = "", suffix = "" }: { value: numb
 }
 
 const TechMarquee = () => {
+  const { t } = useLanguage()
   const techs = [
     "v0.app", "Claude Code", "n8n", "Supabase", "Vercel", "GitHub", "Stripe", "Next.js 15"
   ]
@@ -67,7 +60,7 @@ const TechMarquee = () => {
   return (
     <div className="w-full overflow-hidden py-4">
       <p className="text-zinc-500 text-[10px] sm:text-xs uppercase tracking-widest mb-6 text-center">
-        En 8 semanas dominarás el stack que usan las startups que importan:
+        {t('urgency.marquee')}
       </p>
       <div className="relative flex max-w-[100vw] overflow-hidden">
         <motion.div
@@ -90,7 +83,8 @@ const TechMarquee = () => {
   )
 }
 
-const CountdownTimer = () => {
+const CountdownTimerBlock = () => {
+  const { t } = useLanguage()
   const targetDate = new Date("2026-05-31T23:59:00-04:00") // ET timezone (UTC-4 in April)
   const [timeLeft, setTimeLeft] = useState<{ dd: number; hh: number; mm: number; ss: number } | null>(null)
   const [isFinished, setIsFinished] = useState(false)
@@ -142,7 +136,8 @@ const CountdownTimer = () => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full text-red-400 font-bold text-lg">
               <Clock className="w-5 h-5" />
-              Inscripciones cerradas
+              {t('urgency.timer_closed')} || "Inscripciones cerradas" 
+              {/* Added to language.ts below if missing */}
             </div>
           </motion.div>
         ) : (
@@ -154,14 +149,14 @@ const CountdownTimer = () => {
             aria-live="polite"
           >
             <p className="text-zinc-500 text-sm font-medium uppercase tracking-wider">
-              Inscripciones cierran en:
+              {t('urgency.timer_label')}
             </p>
             <div className="grid grid-cols-4 gap-4 px-4 sm:gap-6">
               {[
-                { label: "DD", value: timeLeft?.dd },
-                { label: "HH", value: timeLeft?.hh },
-                { label: "MM", value: timeLeft?.mm },
-                { label: "SS", value: timeLeft?.ss },
+                { label: t('common.days_short'), value: timeLeft?.dd },
+                { label: t('common.hours_short'), value: timeLeft?.hh },
+                { label: t('common.minutes_short'), value: timeLeft?.mm },
+                { label: t('common.seconds_short'), value: timeLeft?.ss },
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center">
                   <div className="bg-zinc-900 border border-zinc-800 rounded-xl w-16 h-20 sm:w-20 sm:h-24 flex items-center justify-center shadow-lg">
@@ -181,6 +176,7 @@ const CountdownTimer = () => {
 }
 
 export function HeroUrgencySection() {
+  const { t } = useLanguage()
   const shouldReduceMotion = useReducedMotion()
 
   // Custom scroll target for the button
@@ -191,6 +187,9 @@ export function HeroUrgencySection() {
       target.scrollIntoView({ behavior: "smooth" })
     }
   }
+
+  const nowItems = [0, 1, 2, 3].map(i => t(`urgency.now_items.${i}`))
+  const laterItems = [0, 1, 2, 3, 4].map(i => t(`urgency.later_items.${i}`))
 
   return (
     <section className="bg-[#0a0a0a] text-[#fafafa] font-sans py-24 px-4 overflow-hidden">
@@ -206,7 +205,7 @@ export function HeroUrgencySection() {
           <Badge className="bg-red-500/10 border-red-500/30 text-[#f87171] hover:bg-red-500/15 transition-colors px-4 py-1.5 rounded-full flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span className="text-xs sm:text-sm font-medium">
-              Solo 18 cupos restantes · Cohort #1 cierra 31 de Mayo
+              {t('urgency.badge')}
             </span>
           </Badge>
         </motion.div>
@@ -214,7 +213,7 @@ export function HeroUrgencySection() {
         {/* BLOQUE 2 & 3 — Wake-up Call & Subheadline */}
         <div className="text-center space-y-8">
           <h1 className="text-4xl md:text-6xl font-bold max-w-4xl mx-auto leading-[1.1] tracking-tight text-balance">
-            {["¿Cuántos proyectos llevas en el backlog", "que nunca pasaron de una", "porque no tenías quién los construyera?"].map((line, i) => (
+            {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
                 custom={i + 1}
@@ -226,10 +225,10 @@ export function HeroUrgencySection() {
               >
                 {i === 1 ? (
                   <>
-                    {line.split(" ").slice(0, 4).join(" ")}{" "}
-                    <span className="line-through text-zinc-600">idea en Notion</span>
+                    {t('urgency.headline.1').split(" ").slice(0, 4).join(" ")}{" "}
+                    <span className="line-through text-zinc-600">{t('urgency.notion_idea')}</span>
                   </>
-                ) : line}
+                ) : t(`urgency.headline.${i}`)}
               </motion.span>
             ))}
           </h1>
@@ -241,8 +240,7 @@ export function HeroUrgencySection() {
             transition={{ delay: 0.5, duration: 0.7 }}
             className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto text-balance leading-relaxed"
           >
-            Esa lista es tu costo de oportunidad real.
-            <br className="hidden md:block" /> Alguien en tu industria ya tomó la decisión que tú estás postergando.
+            {t('urgency.subheadline')}
           </motion.p>
         </div>
 
@@ -258,21 +256,19 @@ export function HeroUrgencySection() {
           >
             <div className="absolute inset-0 bg-[#2dd4bf]/5 rounded-2xl pointer-events-none" />
             <Badge className="bg-[#2dd4bf]/10 text-[#2dd4bf] border-[#2dd4bf]/20 text-[10px] uppercase tracking-wider mb-6">
-              ✦ Mayo 2026 — Actúas ahora
+              ✦ {t('urgency.now_tag')}
             </Badge>
             <ul className="space-y-4">
-              {[
-                "Founding Member: acceso 1-on-1 con los fundadores",
-                "Curriculum vivo que moldeas tú",
-                "MVP en semanas, no en 18 meses",
-                "Stack correcto desde el día 1 — cero deuda técnica",
-                <span key="price">Precio Cohort #1: <b className="text-white text-xl">$1,897</b></span>
-              ].map((item, idx) => (
+              {nowItems.map((item, idx) => (
                 <li key={idx} className="flex gap-3 text-zinc-300 text-sm sm:text-base leading-snug">
                   <Check className="w-5 h-5 text-[#2dd4bf] shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </li>
               ))}
+              <li className="flex gap-3 text-zinc-300 text-sm sm:text-base leading-snug">
+                <Check className="w-5 h-5 text-[#2dd4bf] shrink-0 mt-0.5" />
+                <span>{t('urgency.now_items.4')} <b className="text-white text-xl">$1,897</b></span>
+              </li>
             </ul>
           </motion.div>
 
@@ -285,16 +281,10 @@ export function HeroUrgencySection() {
             className="relative border border-red-500/40 bg-red-500/5 rounded-2xl p-8 transition-all"
           >
             <Badge className="bg-red-500/10 text-[#f87171] border-red-500/20 text-[10px] uppercase tracking-wider mb-6">
-              ✦ Octubre 2026 — Si esperas
+              ✦ {t('urgency.later_tag')}
             </Badge>
             <ul className="space-y-4 opacity-70">
-              {[
-                "Cohort genérico, sin acceso a fundadores",
-                "Curriculum rígido, diseñado para la masa",
-                "Pagarás para migrar lo que mal-construiste",
-                "Sigues dependiendo de developers externos",
-                "El precio de mercado habrá subido un 40%"
-              ].map((item, idx) => (
+              {laterItems.map((item, idx) => (
                 <li key={idx} className="flex gap-3 text-zinc-400 text-sm sm:text-base leading-snug">
                   <X className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                   <span>{item}</span>
@@ -308,15 +298,15 @@ export function HeroUrgencySection() {
         <div className="p-5">
           {/* Grupo de los primeros 3 CountUpNumber */}
           <div className="col-span-1 md:col-span-3 grid grid-cols-1 md:grid-cols-3 mb-4 gap-6">
-            <CountUpNumber value={1500} prefix="Dedsde $" label="por landing subcontratada" />
-            <CountUpNumber value={2000} prefix="Dedsde $" label="por cada automatización en n8n subcontratada" />
-            <CountUpNumber value={3000} prefix="Dedsde $" label="por cada Web App Básica subcontratada" />
+            <CountUpNumber value={1500} prefix={`${t('from')} $`} label={t('urgency.metrics.0')} />
+            <CountUpNumber value={2000} prefix={`${t('from')} $`} label={t('urgency.metrics.1')} />
+            <CountUpNumber value={3000} prefix={`${t('from')} $`} label={t('urgency.metrics.2')} />
           </div>
 
           {/* Los otros dos CountUpNumber fuera del grupo */}
           <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <CountUpNumber value={4} suffix=" sem" label="de latencia por cada proyecto dependiente de un dev" />
-            <CountUpNumber value={8} suffix=" sem" label="de aprendizaje acelerado (vs 18 meses)" />
+            <CountUpNumber value={4} suffix={` ${t('week')}`} label={t('urgency.metrics.3')} />
+            <CountUpNumber value={8} suffix={` ${t('week')}`} label={t('urgency.metrics.4')} />
           </div>
         </div>
 
@@ -328,10 +318,10 @@ export function HeroUrgencySection() {
         <div className="max-w-md mx-auto text-center space-y-8 pt-12">
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              El mercado no espera a que estés listo.
+              {t('urgency.final_title')}
             </h2>
             <p className="text-zinc-400 text-sm sm:text-base">
-              Protolylat no vende cursos. Vende el tiempo de mercado que no puedes recuperar si esperas.
+              {t('urgency.final_desc')}
             </p>
           </div>
 
@@ -343,9 +333,9 @@ export function HeroUrgencySection() {
               <Link href="#aplicar" onClick={handleCtaClick}>
                 <Button
                   className="w-full h-16 rounded-2xl font-bold text-lg bg-[#2dd4bf] text-black hover:bg-[#2dd4bf]/90 shadow-[0_0_24px_rgba(45,212,191,0.2)] hover:shadow-[0_0_32px_rgba(45,212,191,0.4)] transition-all flex items-center justify-center gap-3 group"
-                  aria-label="Asegurar mi cupo en el Cohort #1"
+                  aria-label={t('urgency.cta')}
                 >
-                  Asegurar mi cupo en el Cohort #1 — $1,897
+                  {t('urgency.cta')}
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -354,22 +344,22 @@ export function HeroUrgencySection() {
             <div className="space-y-2.5 text-zinc-500 text-[11px] sm:text-xs">
               <div className="flex items-center justify-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#2dd4bf]/70" />
-                <span>Garantía total si no construyes 3 portafolios funcionales</span>
+                <span>{t('urgency.guarantee')}</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <CreditCard className="w-3.5 h-3.5 text-zinc-600" />
-                <span>3 pagos de $632 (a 0, 30 y 60 días)</span>
+                <span>{t('urgency.payments')}</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <Users className="w-3.5 h-3.5 text-red-400/70" />
-                <span>Solo 18 cupos disponibles en el Cohort #1</span>
+                <span>{t('urgency.badge')}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* BLOQUE 8 — Countdown Timer */}
-        <CountdownTimer />
+        <CountdownTimerBlock />
 
       </div>
     </section>

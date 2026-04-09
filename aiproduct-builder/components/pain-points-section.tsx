@@ -2,33 +2,10 @@
 
 import { motion } from "framer-motion"
 import { Brain, Frown, DollarSign, RefreshCcw } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const painPoints = [
-  {
-    icon: Brain,
-    title: "Par\u00e1lisis por sintaxis",
-    desc: "Crees que necesitas a\u00f1os para entrar en tech",
-    color: "border-l-red-500/60",
-  },
-  {
-    icon: Frown,
-    title: "Miedo al c\u00f3digo",
-    desc: "Lo asocias con matem\u00e1ticas complejas y lenguajes cr\u00edpticos",
-    color: "border-l-orange-500/60",
-  },
-  {
-    icon: DollarSign,
-    title: "Brecha de ingresos",
-    desc: "Ganas m\u00e1s que el m\u00ednimo pero sin ruta de crecimiento",
-    color: "border-l-amber-500/60",
-  },
-  {
-    icon: RefreshCcw,
-    title: "Cursos sin estructura",
-    desc: "Empiezas y abandonas por falta de comunidad",
-    color: "border-l-red-400/60",
-  },
-]
+const icons = [Brain, Frown, DollarSign, RefreshCcw]
+const colors = ["border-l-red-500/60", "border-l-orange-500/60", "border-l-amber-500/60", "border-l-red-400/60"]
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 24 },
@@ -40,6 +17,16 @@ const fadeInUp = {
 }
 
 export function PainPointsSection() {
+  const { t } = useLanguage()
+  
+  // Create an array of pain points using translations
+  const painPoints = [0, 1, 2, 3].map(i => ({
+    icon: icons[i],
+    title: t(`pain_points.items.${i}.title`),
+    desc: t(`pain_points.items.${i}.desc`),
+    color: colors[i]
+  }))
+
   return (
     <section className="py-20 md:py-28 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -51,18 +38,18 @@ export function PainPointsSection() {
           className="text-center mb-14"
         >
           <p className="text-[#7c3aed] font-mono text-sm mb-3 uppercase tracking-wider">
-            {"\u00bfTe suena familiar?"}
+            {t('pain_points.tag')}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white text-balance">
-            Por que sigues atascado{" "}
-            <span className="text-[#71717a]">(y no es tu culpa)</span>
+            {t('pain_points.title')}{" "}
+            <span className="text-[#71717a]">{t('pain_points.subtitle')}</span>
           </h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
           {painPoints.map((item, i) => (
             <motion.div
-              key={item.title}
+              key={i}
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
@@ -90,7 +77,7 @@ export function PainPointsSection() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="text-center mt-12 text-lg text-[#a1a1aa]"
         >
-          Existe una forma diferente. Se llama{" "}
+          {t('pain_points.footer')}{" "}
           <span className="text-[#7c3aed] font-semibold">Vibe Coding</span>.
         </motion.p>
       </div>

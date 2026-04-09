@@ -15,9 +15,11 @@ import {
   User,
   KeyRound
 } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 // Sprint 1 Mockup: Lead Capture Flow
 function LeadCaptureMockup() {
+  const { t } = useLanguage()
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
@@ -44,7 +46,7 @@ function LeadCaptureMockup() {
               whileHover={{ scale: 1.02 }}
               className="h-8 w-full bg-gradient-to-r from-[#7c3aed] to-[#9333ea] rounded flex items-center justify-center"
             >
-              <span className="text-xs text-white font-medium">Enviar</span>
+              <span className="text-xs text-white font-medium">{t('curriculum.mockups.send')}</span>
             </motion.div>
           </div>
         </motion.div>
@@ -107,15 +109,6 @@ function LeadCaptureMockup() {
 
 // Sprint 2 Mockup: Database + JSON + Flow Nodes
 function DatabaseFlowMockup() {
-  const jsonCode = `{
-  "user_id": "usr_7x2k",
-  "action": "create",
-  "data": {
-    "name": "Lead #142",
-    "status": "active"
-  }
-}`
-
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
@@ -174,7 +167,7 @@ function DatabaseFlowMockup() {
           <pre className="p-3 text-xs font-mono overflow-x-auto">
             <code>
               <span className="text-[#71717a]">{'{'}</span>{'\n'}
-              <span className="text-[#c4b5fd]">  "user_id"</span><span className="text-[#71717a]">:</span> <span className="text-[#22c55e]">"usr_7x2k"</span><span className="text-[#71717a]">,</span>{'\n'}
+              <span className="text-[#c4b5fd]">  "user_id"</span><span className="text-[#71717a]">:</span> <span className="text-[#22c55e]">"usr_7x2k"</span><span className="text-[#71717a] Susan">,</span>{'\n'}
               <span className="text-[#c4b5fd]">  "action"</span><span className="text-[#71717a]">:</span> <span className="text-[#22c55e]">"create"</span><span className="text-[#71717a]">,</span>{'\n'}
               <span className="text-[#c4b5fd]">  "data"</span><span className="text-[#71717a]">:</span> <span className="text-[#71717a]">{'{'}</span>{'\n'}
               <span className="text-[#c4b5fd]">    "name"</span><span className="text-[#71717a]">:</span> <span className="text-[#22c55e]">"Lead #142"</span>{'\n'}
@@ -220,6 +213,7 @@ function DatabaseFlowMockup() {
 
 // Sprint 3 Mockup: Login + Stripe Success Toast
 function AuthPaymentMockup() {
+  const { t } = useLanguage()
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
@@ -242,7 +236,7 @@ function AuthPaymentMockup() {
               <Lock className="size-5 text-white" />
             </div>
           </div>
-          <h4 className="text-sm font-semibold text-white text-center mb-4">Iniciar Sesion</h4>
+          <h4 className="text-sm font-semibold text-white text-center mb-4">{t('curriculum.mockups.login_title')}</h4>
           <div className="space-y-3">
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 text-[#71717a]" />
@@ -260,7 +254,7 @@ function AuthPaymentMockup() {
               whileHover={{ scale: 1.02 }}
               className="h-9 w-full bg-gradient-to-r from-[#7c3aed] to-[#9333ea] rounded-lg flex items-center justify-center cursor-pointer"
             >
-              <span className="text-xs text-white font-medium">Acceder</span>
+              <span className="text-xs text-white font-medium">{t('curriculum.mockups.access')}</span>
             </motion.div>
           </div>
         </motion.div>
@@ -285,8 +279,8 @@ function AuthPaymentMockup() {
                 <Check className="size-5 text-black" strokeWidth={3} />
               </motion.div>
               <div>
-                <p className="text-sm font-semibold text-white">Payment Successful</p>
-                <p className="text-xs text-[#71717a]">Transaction completed</p>
+                <p className="text-sm font-semibold text-white">{t('curriculum.mockups.payment_success')}</p>
+                <p className="text-xs text-[#71717a]">{t('curriculum.mockups.transaction_completed')}</p>
               </div>
               <div className="ml-4 pl-4 border-l border-[#27272a]">
                 <div className="flex items-center gap-1.5">
@@ -304,6 +298,7 @@ function AuthPaymentMockup() {
 
 // Sprint 4 Mockup: Terminal + Vercel Rocket with Glow
 function DeploymentMockup() {
+  const { t } = useLanguage()
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
@@ -358,7 +353,7 @@ function DeploymentMockup() {
               transition={{ duration: 0.3, delay: 0.9 }}
               className="text-[#22c55e]"
             >
-              Building...
+              {t('curriculum.mockups.building')}
             </motion.div>
             <motion.div 
               initial={{ opacity: 0 }}
@@ -367,7 +362,7 @@ function DeploymentMockup() {
               transition={{ duration: 0.3, delay: 1.1 }}
               className="text-[#22c55e] font-semibold"
             >
-              Done in 1.2s
+              {t('curriculum.mockups.done')}
             </motion.div>
             <motion.div 
               initial={{ opacity: 0 }}
@@ -376,7 +371,7 @@ function DeploymentMockup() {
               transition={{ duration: 0.3, delay: 1.3 }}
               className="text-[#22c55e] font-semibold"
             >
-              Deployed to Production
+              {t('curriculum.mockups.deployed')}
             </motion.div>
             <motion.div 
               initial={{ opacity: 0 }}
@@ -429,54 +424,56 @@ function DeploymentMockup() {
   )
 }
 
-const sprints = [
-  {
-    num: 1,
-    title: "Fundamentos y Captura",
-    weeks: "Semanas 1-2",
-    description: "Pensamiento en sistemas, lógica computacional, diseño de interfaces y el ecosistema Low-Code.",
-    topics: ["Interacción Cliente/Servidor", "Inputs/Outputs", "Diseño Responsivo", "HTML/CSS básico"],
-    tools: ["n8n", "v0.app"],
-    outcome: "Landing Page profesional conectada a automatización de leads.",
-    MockupComponent: LeadCaptureMockup,
-    accentColor: "#7c3aed",
-  },
-  {
-    num: 2,
-    title: "Backend & Data Logic",
-    weeks: "Semanas 3-4",
-    description: "APIs, webhooks, JSON, operaciones CRUD y arquitectura de agentes con datos persistentes.",
-    topics: ["Webhooks & JSON", "Métodos HTTP", "Operaciones CRUD", "Integración de LLMs"],
-    tools: ["Claude Code", "Supabase"],
-    outcome: "Sistema de notificaciones y apps con datos dinámicos.",
-    MockupComponent: DatabaseFlowMockup,
-    accentColor: "#22c55e",
-  },
-  {
-    num: 3,
-    title: "Auth & Monetizacion",
-    weeks: "Semanas 5-6",
-    description: "Autenticación, gestión de sesiones, seguridad RLS e integraciones de pago.",
-    topics: ["Login/Registro", "Row Level Security", "APIs REST", "Flujos de pago"],
-    tools: ["Supabase Auth", "Stripe", "n8n"],
-    outcome: "MVP con usuarios autenticados y monetización real.",
-    MockupComponent: AuthPaymentMockup,
-    accentColor: "#f97316",
-  },
-  {
-    num: 4,
-    title: "Deployment & Scale",
-    weeks: "Semanas 7-8",
-    description: "Ambientes Dev/Prod, Cloud/Hosting, logs, testing y documentación técnica.",
-    topics: ["Dev vs Production", "Lectura de logs", "Testing básico", "Documentación"],
-    tools: ["Vercel", "Stack completo"],
-    outcome: "Portfolio Final en producción con dominio propio.",
-    MockupComponent: DeploymentMockup,
-    accentColor: "#c4b5fd",
-  },
-]
-
 export function CurriculumSection() {
+  const { t } = useLanguage()
+
+  const sprints = [
+    {
+      num: 1,
+      title: t('curriculum.sprints.0.title'),
+      weeks: t('curriculum.sprints.0.weeks'),
+      description: t('curriculum.sprints.0.description'),
+      topics: [0, 1, 2, 3].map(i => t(`curriculum.sprints.0.topics.${i}`)),
+      tools: ["n8n", "v0.app"],
+      outcome: t('curriculum.sprints.0.outcome'),
+      MockupComponent: LeadCaptureMockup,
+      accentColor: "#7c3aed",
+    },
+    {
+      num: 2,
+      title: t('curriculum.sprints.1.title'),
+      weeks: t('curriculum.sprints.1.weeks'),
+      description: t('curriculum.sprints.1.description'),
+      topics: [0, 1, 2, 3].map(i => t(`curriculum.sprints.1.topics.${i}`)),
+      tools: ["Claude Code", "Supabase"],
+      outcome: t('curriculum.sprints.1.outcome'),
+      MockupComponent: DatabaseFlowMockup,
+      accentColor: "#22c55e",
+    },
+    {
+      num: 3,
+      title: t('curriculum.sprints.2.title'),
+      weeks: t('curriculum.sprints.2.weeks'),
+      description: t('curriculum.sprints.2.description'),
+      topics: [0, 1, 2, 3].map(i => t(`curriculum.sprints.2.topics.${i}`)),
+      tools: ["Supabase Auth", "Stripe", "n8n"],
+      outcome: t('curriculum.sprints.2.outcome'),
+      MockupComponent: AuthPaymentMockup,
+      accentColor: "#f97316",
+    },
+    {
+      num: 4,
+      title: t('curriculum.sprints.3.title'),
+      weeks: t('curriculum.sprints.3.weeks'),
+      description: t('curriculum.sprints.3.description'),
+      topics: [0, 1, 2, 3].map(i => t(`curriculum.sprints.3.topics.${i}`)),
+      tools: ["Vercel", "Stack completo"],
+      outcome: t('curriculum.sprints.3.outcome'),
+      MockupComponent: DeploymentMockup,
+      accentColor: "#c4b5fd",
+    },
+  ]
+
   return (
     <section id="curriculum" className="py-20 md:py-28 relative overflow-hidden">
       {/* Background gradient */}
@@ -491,13 +488,13 @@ export function CurriculumSection() {
           className="text-center mb-16"
         >
           <p className="text-[#7c3aed] font-mono text-sm mb-3 uppercase tracking-wider">
-            Curriculo de Sprints
+            {t('curriculum.tag')}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-balance">
-            8 semanas para dominar el stack completo
+            {t('curriculum.title')}
           </h2>
           <p className="text-[#71717a] mt-4 max-w-2xl mx-auto text-lg">
-            4 sprints intensivos con entregables reales en cada fase
+            {t('curriculum.subtitle')}
           </p>
         </motion.div>
 
@@ -555,7 +552,7 @@ export function CurriculumSection() {
                         </span>
                         <div>
                           <span className="text-xs font-mono uppercase tracking-wider" style={{ color: sprint.accentColor }}>
-                            Sprint {sprint.num} — {sprint.weeks}
+                            {t('curriculum.sprint_label')} {sprint.num} — {sprint.weeks}
                           </span>
                           <h3 className="text-xl font-bold text-white mt-1">
                             {sprint.title}
@@ -581,7 +578,7 @@ export function CurriculumSection() {
                         ))}
                       </div>
                       <div className="flex items-center gap-2 mt-4">
-                        <span className="text-xs text-[#71717a]">Herramientas:</span>
+                        <span className="text-xs text-[#71717a]">{t('curriculum.tools_label')}</span>
                         {sprint.tools.map((tool) => (
                           <Badge 
                             key={tool}
@@ -612,7 +609,7 @@ export function CurriculumSection() {
                       }}
                     >
                       <p className="text-xs font-mono uppercase tracking-wider mb-1" style={{ color: sprint.accentColor }}>
-                        Outcome
+                        {t('curriculum.outcome_label')}
                       </p>
                       <p className="text-sm text-[#e4e4e7] leading-relaxed">
                         {sprint.outcome}

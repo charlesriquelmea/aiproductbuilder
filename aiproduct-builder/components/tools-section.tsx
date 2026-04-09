@@ -1,113 +1,81 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Palette, Bot, Zap, Database, Globe, Lock, CreditCard, Github } from "lucide-react"
+import { Monitor, Cpu, Workflow } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
-const mainTools = [
-  {
-    icon: Palette,
-    name: "v0.app",
-    label: "Interfaces (Frontend)",
-    desc: "Generación de UI responsiva mediante prompts directos.",
-    color: "from-[#7c3aed]/20 to-[#7c3aed]/5",
-    borderColor: "border-[#7c3aed]/30",
-    iconColor: "text-[#7c3aed]",
-  },
-  {
-    icon: Bot,
-    name: "Claude Code / KiloCode",
-    label: "Lógica (El Cerebro)",
-    desc: "Manipulación de datos, reglas de negocio y Vibe Coding real.",
-    color: "from-[#f97316]/20 to-[#f97316]/5",
-    borderColor: "border-[#f97316]/30",
-    iconColor: "text-[#f97316]",
-  },
-  {
-    icon: Zap,
-    name: "n8n",
-    label: "Orquestación",
-    desc: "Workflows visuales y conexión de APIs.",
-    color: "from-[#22c55e]/20 to-[#22c55e]/5",
-    borderColor: "border-[#22c55e]/30",
-    iconColor: "text-[#22c55e]",
-  },
-]
-
-const supportTools = [
-  { icon: Database, name: "Supabase", label: "Datos (Backend)" },
-  { icon: Globe, name: "Vercel / Netlify", label: "Despliegue (Cloud)" },
-  { icon: Lock, name: "Supabase Auth (RLS)", label: "Seguridad" },
-  { icon: CreditCard, name: "Stripe / MercadoPago", label: "Pagos" },
-  { icon: Github, name: "GitHub", label: "Control de versiones" },
-]
+const icons = [Monitor, Cpu, Workflow]
 
 export function ToolsSection() {
+  const { t } = useLanguage()
+
+  const mainTools = [0, 1, 2].map(i => ({
+    icon: icons[i],
+    label: t(`tools.main.${i}.label`),
+    desc: t(`tools.main.${i}.desc`),
+  }))
+
+  const supportTools = [0, 1, 2, 3, 4].map(i => ({
+    label: t(`tools.support.${i}.label`),
+    name: t(`tools.support.${i}.name`),
+  }))
+
   return (
     <section className="py-20 md:py-28 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f14] to-[#0a0a0a]" />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
           <p className="text-[#7c3aed] font-mono text-sm mb-3 uppercase tracking-wider">
-            Stack Tecnológico
+            {t('tools.tag')}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white text-balance">
-            El stack tecnológico del Product Builder.
+            {t('tools.title')}
           </h2>
         </motion.div>
 
-        {/* Main tools */}
-        <div className="grid sm:grid-cols-3 gap-5 max-w-4xl mx-auto mb-10">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
           {mainTools.map((tool, i) => (
             <motion.div
-              key={tool.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group relative bg-gradient-to-br ${tool.color} border ${tool.borderColor} rounded-xl p-6 hover:shadow-lg hover:shadow-[#7c3aed]/5 transition-all duration-300 hover:-translate-y-1`}
+              className="bg-[#111111] border border-[#27272a] rounded-2xl p-8 flex flex-col items-center text-center hover:border-[#7c3aed]/50 transition-colors group"
             >
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="rounded-xl bg-[#111111] border border-[#27272a] p-3">
-                  <tool.icon className={`size-8 ${tool.iconColor}`} />
-                </div>
-                <div>
-                  <p className="text-xs font-mono text-[#71717a] uppercase tracking-wider mb-1">{tool.label}</p>
-                  <h3 className="text-lg font-bold text-white font-mono">{tool.name}</h3>
-                </div>
-                <p className="text-sm text-[#a1a1aa] leading-relaxed">{tool.desc}</p>
+              <div className="size-16 rounded-2xl bg-[#1a1a1a] border border-[#27272a] flex items-center justify-center mb-6 group-hover:bg-[#7c3aed]/10 group-hover:border-[#7c3aed]/30 transition-colors">
+                <tool.icon className="size-8 text-[#71717a] group-hover:text-[#7c3aed] transition-colors" />
               </div>
+              <h3 className="text-lg font-bold text-white mb-2">{tool.label}</h3>
+              <p className="text-sm text-[#71717a] leading-relaxed">{tool.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Supporting tools */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto"
-        >
-          {supportTools.map((tool) => (
-            <div
-              key={tool.name}
-              className="flex items-center gap-2 bg-[#111111] border border-[#27272a] rounded-lg px-4 py-2.5 text-sm text-[#a1a1aa]"
-            >
-              <tool.icon className="size-4 text-[#71717a]" />
-              <span>
-                <span className="text-[#52525b] text-xs mr-1">{tool.label}:</span>
-                {tool.name}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {supportTools.map((tool, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="bg-[#0c0c0c] border border-[#27272a] rounded-xl p-4 text-center"
+              >
+                <p className="text-[10px] font-mono text-[#52525b] uppercase tracking-widest mb-1">
+                  {tool.label}
+                </p>
+                <p className="text-sm font-semibold text-[#a1a1aa]">{tool.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
