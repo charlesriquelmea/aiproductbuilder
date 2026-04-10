@@ -258,7 +258,7 @@ export const language = {
     },
     guarantee: {
       title: "Garantía de Inversión Segura",
-      description: "Si completas el 100% de los proyectos semanales y no construyes al menos 3 portafolios funcionales al final del programa, te incluimos en el",
+      description: "Si no completas 2 de los 3 de los proyectos funcionales al final del programa, te incluimos en el",
       free_next: "próximo cohort completamente gratis",
       footer: "Queremos que ganes. Punto."
     },
@@ -603,7 +603,7 @@ export const language = {
     },
     guarantee: {
       title: "Secure Investment Guarantee",
-      description: "If you complete 100% of the weekly projects and don't build at least 3 functional portfolios by the end of the program, we'll include you in the",
+      description: "If you do not complete 2 of the 3 functional projects by the end of the program, we will include you in the",
       free_next: "next cohort completely free",
       footer: "We want you to win. Period."
     },
